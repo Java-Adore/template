@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/master4Login.xhtml">
+
+	<ui:define name="title">
+		<title>Login</title>
+	</ui:define>
+
+	<ui:define name="content">
+		<center>
+			<div style="font-family: fantasy; top:50%;">
+
+				<h:form id="loginForm">
+
+					<p:panel header="Login" style="width: 470px;  text-align: left;">
+
+						<h:panelGrid id="loginPanel" columns="1">
+
+							<p:messages globalOnly="true" showDetail="no" autoUpdate="true"
+								closable="true" rendered="#{!empty loginBean.fm}" />
+
+
+							<h:outputText value="Username" style="font-size: 18px;" />
+
+							<p:inputText id="username" value="#{loginBean.username}"
+								style="width: 420px;"></p:inputText>
+
+							<br />
+
+							<h:outputText value="Password" style="font-size: 18px;" />
+
+							<p:password id="password" value="#{loginBean.password}"
+								feedback="false" style="width: 420px;"></p:password>
+
+							<br />
+							<f:facet name="footer">
+								<p:panelGrid columns="2" styleClass="loginPasswordGrid">
+									<p:commandButton id="login" value="Login" ajax="true"
+										update=":loginForm" actionListener="#{loginBean.doLogin()}" />
+									<p:commandLink id="user" actionListener="#" style="text-decoration: underline; padding-left: 85px; margin-left: 85px; float: right;">
+										<h:outputText value="Forget Password" style="color: #098DB1;"/>
+									</p:commandLink>
+								</p:panelGrid>
+								
+							</f:facet>
+						</h:panelGrid>
+
+					</p:panel>
+
+				</h:form>
+			</div>
+		</center>
+	</ui:define>
+
+</ui:composition>
